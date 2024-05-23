@@ -3,191 +3,102 @@
 {% block title %}Shop - Edwards Jewellers{% endblock %}
 
 {% block content %}
-
-  <section class="shoptitleseciton">
+<section class="shoptitlesection">
     <div class="w-layout-grid _12colg colmargin">
-      <div id="w-node-c700e414-282e-fa3b-5d5b-5a559b48fbd2-78b4ab80" class="shoptitle-description">
-        <h1 class="shoptitle minor-third---h1">Shop</h1>
-        <p class="shopdescription minor-third---body-large">Browse our luxury collection of whatever. Browse our luxury collection of whatever.</p>
-      </div>
+        <div id="w-node-c700e414-282e-fa3b-5d5b-5a559b48fbd2-78b4ab80" class="shoptitle-description">
+            <h1 class="shoptitle minor-third---h1">Shop</h1>
+            <p class="shopdescription minor-third---body-large">Browse our luxury collection of whatever. Browse our luxury collection of whatever.</p>
+        </div>
     </div>
-  </section>
-  <section class="shopnavigationsection">
+</section>
+<section class="shopnavigationsection">
     <div class="vintage-newfilter">
-      <a href="#" class="link-block-4 w-inline-block">
-        <h2 class="vintagebutton">Vintage</h2>
-      </a>
-      <a href="#" class="link-block-4 w-inline-block">
-        <h2 class="newbutton">New</h2>
-      </a>
+        {% for style in styles %}
+        <a href="#" class="link-block-4 w-inline-block" data-style="{{ style.id }}">
+            <h2 class="vintagebutton">{{ style.name }}</h2>
+        </a>
+        {% endfor %}
     </div>
     <div class="shop-nav-menu">
-      <a href="#" class="filterlink w-inline-block">
-        <h3 class="shopfilter minor-third---h3-semi-bold shopall">Shop All</h3>
-      </a>
-      <a href="#" class="filterlink w-inline-block">
-        <h3 class="shopfilter minor-third---h3-semi-bold rings">Rings</h3>
-      </a>
-      <a href="#" class="filterlink w-inline-block">
-        <h3 class="shopfilter minor-third---h3-semi-bold earrings">Earrings</h3>
-      </a>
-      <a href="#" class="filterlink w-inline-block">
-        <h3 class="shopfilter minor-third---h3-semi-bold necklaces">Necklaces</h3>
-      </a>
-      <a href="#" class="filterlink w-inline-block">
-        <h3 class="shopfilter minor-third---h3-semi-bold pendants">Pendants</h3>
-      </a>
-      <a href="#" class="filterlink w-inline-block">
-        <h3 class="shopfilter minor-third---h3-semi-bold bracelets">Bracelets</h3>
-      </a>
+        <a href="#" class="filterlink w-inline-block" data-category="">
+            <h3 class="shopfilter minor-third---h3-semi-bold shopall">Shop All</h3>
+        </a>
+        {% for category in categories %}
+        <a href="#" class="filterlink w-inline-block" data-category="{{ category.id }}">
+            <h3 class="shopfilter minor-third---h3-semi-bold">{{ category.name }}</h3>
+        </a>
+        {% endfor %}
     </div>
-  </section>
-  <section class="product-section">
+</section>
+<section class="product-section">
     <div class="w-layout-grid _12colg colmargin">
-      <div id="w-node-_88aab53b-dc12-f4da-2b37-096a18c3b96c-78b4ab80" class="productholder">
-        <div id="w-node-_7592565a-0da9-5a97-80fb-d6bf7412e87c-78b4ab80" class="product-frame"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="product-image">
-          <div class="productcontent">
-            <div class="productinfo">
-              <div class="productname minor-third---bl-semi-bold">Product Name </div>
-              <div class="productdescription minor-third---body">THIS Is item thisis hsiddh ssidh sidhs dish dishd idsh dishd ishd ishd sidh sidhsdh </div>
-              <div class="productprice minor-third---body-large">£0.00</div>
+        <div id="w-node-_88aab53b-dc12-f4da-2b37-096a18c3b96c-78b4ab80" class="productholder">
+            {% for product in products %}
+            <div id="w-node-_7592565a-0da9-5a97-80fb-d6bf7412e87c-78b4ab80" class="product-frame">
+                <img src="{% if product.images.first %}{{ product.images.first.image.url }}{% else %}https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg{% endif %}" loading="lazy" alt="{{ product.name }}" class="product-image">
+                <div class="productcontent">
+                    <div class="productinfo">
+                        <div class="productname minor-third---bl-semi-bold">{{ product.name }}</div>
+                        <div class="productdescription minor-third---body">{{ product.description }}</div>
+                        <div class="productprice minor-third---body-large">£{{ product.price }}</div>
+                    </div>
+                    <div class="productbuttonrow">
+                        <a href="#" class="addtocart minor-third---body w-button">Buy</a>
+                        <div class="text-block-3">-</div>
+                        <a href="#" class="enquire minor-third---body w-button">Enquire</a>
+                    </div>
+                </div>
             </div>
-            <div class="productbuttonrow">
-              <a href="#" class="addtocart minor-third---body w-button">Buy</a>
-              <div class="text-block-3">-</div>
-              <a href="#" class="enquire minor-third---body w-button">Enquire</a>
-            </div>
-          </div>
+            {% endfor %}
         </div>
-        <div id="w-node-_67f3f451-f465-9afc-cb58-b1bf1d9e6b93-78b4ab80" class="product-frame"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="product-image">
-          <div class="productcontent">
-            <div class="productinfo">
-              <div class="productname minor-third---bl-semi-bold">Product Name </div>
-              <div class="productdescription minor-third---body">THIS Is item thisis hsiddh ssidh sidhs dish dishd idsh dishd ishd ishd sidh sidhsdh </div>
-              <div class="productprice minor-third---body-large">£0.00</div>
-            </div>
-            <div class="productbuttonrow">
-              <a href="#" class="addtocart minor-third---body w-button">Buy</a>
-              <div class="text-block-3">-</div>
-              <a href="#" class="enquire minor-third---body w-button">Enquire</a>
-            </div>
-          </div>
-        </div>
-        <div id="w-node-fad52ab8-a852-f29f-753a-a724157744eb-78b4ab80" class="product-frame"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="product-image">
-          <div class="productcontent">
-            <div class="productinfo">
-              <div class="productname minor-third---bl-semi-bold">Product Name </div>
-              <div class="productdescription minor-third---body">THIS Is item thisis hsiddh ssidh sidhs dish dishd idsh dishd ishd ishd sidh sidhsdh </div>
-              <div class="productprice minor-third---body-large">£0.00</div>
-            </div>
-            <div class="productbuttonrow">
-              <a href="#" class="addtocart minor-third---body w-button">Buy</a>
-              <div class="text-block-3">-</div>
-              <a href="#" class="enquire minor-third---body w-button">Enquire</a>
-            </div>
-          </div>
-        </div>
-        <div id="w-node-eaa2351b-5557-9df9-ebd9-e066b429ea8e-78b4ab80" class="product-frame"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="product-image">
-          <div class="productcontent">
-            <div class="productinfo">
-              <div class="productname minor-third---bl-semi-bold">Product Name </div>
-              <div class="productdescription minor-third---body">THIS Is item thisis hsiddh ssidh sidhs dish dishd idsh dishd ishd ishd sidh sidhsdh </div>
-              <div class="productprice minor-third---body-large">£0.00</div>
-            </div>
-            <div class="productbuttonrow">
-              <a href="#" class="addtocart minor-third---body w-button">Buy</a>
-              <div class="text-block-3">-</div>
-              <a href="#" class="enquire minor-third---body w-button">Enquire</a>
-            </div>
-          </div>
-        </div>
-        <div id="w-node-f07991ee-2ad3-e999-2f7c-9040ee869b1c-78b4ab80" class="product-frame"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="product-image">
-          <div class="productcontent">
-            <div class="productinfo">
-              <div class="productname minor-third---bl-semi-bold">Product Name </div>
-              <div class="productdescription minor-third---body">THIS Is item thisis hsiddh ssidh sidhs dish dishd idsh dishd ishd ishd sidh sidhsdh </div>
-              <div class="productprice minor-third---body-large">£0.00</div>
-            </div>
-            <div class="productbuttonrow">
-              <a href="#" class="addtocart minor-third---body w-button">Buy</a>
-              <div class="text-block-3">-</div>
-              <a href="#" class="enquire minor-third---body w-button">Enquire</a>
-            </div>
-          </div>
-        </div>
-        <div id="w-node-ba609f62-ccee-864c-ba53-f75246c487ee-78b4ab80" class="product-frame"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="product-image">
-          <div class="productcontent">
-            <div class="productinfo">
-              <div class="productname minor-third---bl-semi-bold">Product Name </div>
-              <div class="productdescription minor-third---body">THIS Is item thisis hsiddh ssidh sidhs dish dishd idsh dishd ishd ishd sidh sidhsdh </div>
-              <div class="productprice minor-third---body-large">£0.00</div>
-            </div>
-            <div class="productbuttonrow">
-              <a href="#" class="addtocart minor-third---body w-button">Buy</a>
-              <div class="text-block-3">-</div>
-              <a href="#" class="enquire minor-third---body w-button">Enquire</a>
-            </div>
-          </div>
-        </div>
-        <div id="w-node-_6d6a5233-1268-4fdf-f2dc-5dafeb07071d-78b4ab80" class="product-frame"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="product-image">
-          <div class="productcontent">
-            <div class="productinfo">
-              <div class="productname minor-third---bl-semi-bold">Product Name </div>
-              <div class="productdescription minor-third---body">THIS Is item thisis hsiddh ssidh sidhs dish dishd idsh dishd ishd ishd sidh sidhsdh </div>
-              <div class="productprice minor-third---body-large">£0.00</div>
-            </div>
-            <div class="productbuttonrow">
-              <a href="#" class="addtocart minor-third---body w-button">Buy</a>
-              <div class="text-block-3">-</div>
-              <a href="#" class="enquire minor-third---body w-button">Enquire</a>
-            </div>
-          </div>
-        </div>
-        <div id="w-node-e0d4143e-ddfe-b404-a61f-a5db8cec7127-78b4ab80" class="product-frame"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="product-image">
-          <div class="productcontent">
-            <div class="productinfo">
-              <div class="productname minor-third---bl-semi-bold">Product Name </div>
-              <div class="productdescription minor-third---body">THIS Is item thisis hsiddh ssidh sidhs dish dishd idsh dishd ishd ishd sidh sidhsdh </div>
-              <div class="productprice minor-third---body-large">£0.00</div>
-            </div>
-            <div class="productbuttonrow">
-              <a href="#" class="addtocart minor-third---body w-button">Buy</a>
-              <div class="text-block-3">-</div>
-              <a href="#" class="enquire minor-third---body w-button">Enquire</a>
-            </div>
-          </div>
-        </div>
-        <div id="w-node-_936783d2-de2c-5790-0965-b674aab32f8a-78b4ab80" class="product-frame"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="product-image">
-          <div class="productcontent">
-            <div class="productinfo">
-              <div class="productname minor-third---bl-semi-bold">Product Name </div>
-              <div class="productdescription minor-third---body">THIS Is item thisis hsiddh ssidh sidhs dish dishd idsh dishd ishd ishd sidh sidhsdh </div>
-              <div class="productprice minor-third---body-large">£0.00</div>
-            </div>
-            <div class="productbuttonrow">
-              <a href="#" class="addtocart minor-third---body w-button">Buy</a>
-              <div class="text-block-3">-</div>
-              <a href="#" class="enquire minor-third---body w-button">Enquire</a>
-            </div>
-          </div>
-        </div>
-        <div id="w-node-_692132fa-4318-a653-0b02-841dacb3e21a-78b4ab80" class="product-frame"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="product-image">
-          <div class="productcontent">
-            <div class="productinfo">
-              <div class="productname minor-third---bl-semi-bold">Product Name </div>
-              <div class="productdescription minor-third---body">THIS Is item thisis hsiddh ssidh sidhs dish dishd idsh dishd ishd ishd sidh sidhsdh </div>
-              <div class="productprice minor-third---body-large">£0.00</div>
-            </div>
-            <div class="productbuttonrow">
-              <a href="#" class="addtocart minor-third---body w-button">Buy</a>
-              <div class="text-block-3">-</div>
-              <a href="#" class="enquire minor-third---body w-button">Enquire</a>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </section>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+      $('.filterlink, .link-block-4').on('click', function(event) {
+          event.preventDefault();
+          var categoryId = $(this).data('category') || null;
+          var styleId = $(this).data('style') || null;
+          
+          $.ajax({
+              url: '{% url "filter_products" %}',
+              data: {
+                  'category_id': categoryId,
+                  'style_id': styleId
+              },
+              dataType: 'json',
+              success: function(data) {
+                  var productList = $('#w-node-_88aab53b-dc12-f4da-2b37-096a18c3b96c-78b4ab80');
+                  productList.empty();
+                  $.each(data.products, function(index, product) {
+                      var imageUrl = product.image_url;
+                      productList.append(
+                          '<div id="w-node-_7592565a-0da9-5a97-80fb-d6bf7412e87c-78b4ab80" class="product-frame">' +
+                          '<img src="' + imageUrl + '" loading="lazy" alt="' + product.name + '" class="product-image">' +
+                          '<div class="productcontent">' +
+                          '<div class="productinfo">' +
+                          '<div class="productname minor-third---bl-semi-bold">' + product.name + '</div>' +
+                          '<div class="productdescription minor-third---body">' + product.description + '</div>' +
+                          '<div class="productprice minor-third---body-large">£' + product.price + '</div>' +
+                          '</div>' +
+                          '<div class="productbuttonrow">' +
+                          '<a href="#" class="addtocart minor-third---body w-button">Buy</a>' +
+                          '<div class="text-block-3">-</div>' +
+                          '<a href="#" class="enquire minor-third---body w-button">Enquire</a>' +
+                          '</div>' +
+                          '</div>' +
+                          '</div>'
+                      );
+                  });
+              },
+              error: function() {
+                  alert('An error occurred while fetching the products.');
+              }
+          });
+      });
+  });
+</script>
 
 {% endblock %}
-
