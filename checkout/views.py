@@ -46,7 +46,8 @@ def cart_contents(request):
         {
             'product_name': item.product.name,
             'product_price': item.product.price,
-            'quantity': item.quantity
+            'quantity': item.quantity,
+            'product_image': item.product.images.first().image.url if item.product.images.first() else 'https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg'
         }
         for item in cart_items
     ]

@@ -249,7 +249,12 @@
                         totalQuantity += item.quantity;
                         cartItems.append(
                             '<div class="cart-item">' +
-                            '<p>' + item.product_name + ' - £' + item.product_price + ' x ' + item.quantity + '</p>' +
+                                '<div class="cart-item-image-container">' +
+                                    '<img src="' + item.product_image + '" alt="' + item.product_name + '" class="cart-item-image" />' +
+                                '</div>' +
+                                '<div class="cart-item-details">' +
+                                    '<p>' + item.product_name + ' - £' + item.product_price + ' x ' + item.quantity + '</p>' +
+                                '</div>' +
                             '</div>'
                         );
                     });
@@ -261,10 +266,10 @@
                 }
             });
         }
-  
+
         // Call updateCartPreview on page load
         updateCartPreview();
-  
+
         // Handle Add to Cart
         $('.product-section').on('click', '.addtocart', function(event) {
             event.preventDefault();
@@ -287,7 +292,7 @@
                 }
             });
         });
-  
+
         // Handle product filter
         $('.filterlink, .link-block-4').on('click', function(event) {
             event.preventDefault();
@@ -331,6 +336,10 @@
             });
         });
     });
-  </script>
+</script>
+
 </body>
 </html>
+
+
+

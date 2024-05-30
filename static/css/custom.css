@@ -65,3 +65,22 @@
     text-decoration: none; /* Remove underline from the link */
 }
 
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.cart-item-image-container {
+    flex: 0 0 50px; /* Ensure the image container is a fixed width */
+    margin-right: 10px;
+}
+
+.cart-item-image {
+    width: 100%;
+    height: auto;
+}
+
+.cart-item-details {
+    flex: 1;
+}
