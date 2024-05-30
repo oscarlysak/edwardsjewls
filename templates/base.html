@@ -70,15 +70,18 @@
                     <a class="close-cart" href="#">✕</a>
                 </div>
                 <div class="cart-body">
-                    <p>Subtotal: £0.00</p>
+                    <p>Subtotal: £<span id="cart-subtotal">0.00</span></p>
                     <button class="apple-pay-button">Apple Pay</button>
                     <a href="{% url 'checkout' %}" class="checkout-button">Continue to Checkout</a>
 
                     <!-- Cart items will be dynamically inserted here -->
+                    <div id="cart-items">
+                        <!-- Cart items will be inserted here -->
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+      </div>
     </div>
   </div>
 

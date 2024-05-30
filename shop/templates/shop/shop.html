@@ -1,3 +1,4 @@
+<!-- shop/templates/shop/shop.html -->
 {% extends "base.html" %}
 
 {% block title %}Shop - Edwards Jewellers{% endblock %}
@@ -43,7 +44,7 @@
                         <div class="productprice minor-third---body-large">£{{ product.price }}</div>
                     </div>
                     <div class="productbuttonrow">
-                        <a href="#" class="addtocart minor-third---body w-button">Buy</a>
+                        <a href="#" class="addtocart minor-third---body w-button" data-product-id="{{ product.id }}">Buy</a>
                         <div class="text-block-3">-</div>
                         <a href="#" class="enquire minor-third---body w-button">Enquire</a>
                     </div>
@@ -57,6 +58,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   $(document).ready(function() {
+      // Handle product filter
       $('.filterlink, .link-block-4').on('click', function(event) {
           event.preventDefault();
           var categoryId = $(this).data('category') || null;
@@ -84,7 +86,7 @@
                           '<div class="productprice minor-third---body-large">£' + product.price + '</div>' +
                           '</div>' +
                           '<div class="productbuttonrow">' +
-                          '<a href="#" class="addtocart minor-third---body w-button">Buy</a>' +
+                          '<a href="#" class="addtocart minor-third---body w-button" data-product-id="' + product.id + '">Buy</a>' +
                           '<div class="text-block-3">-</div>' +
                           '<a href="#" class="enquire minor-third---body w-button">Enquire</a>' +
                           '</div>' +
@@ -98,7 +100,52 @@
               }
           });
       });
+
+      // Handle Add to Cart
+      $('.product-section').on('click', '.addtocart', function(event) {
+          event.preventDefault();
+          var productId = $(this).data('product-id');
+          
+          $.ajax({
+              url: '{% url "add_product_to_cart" %}',
+              type: 'POST',
+              data: {
+                  'product_id': productId,
+                  'quantity': 1,
+                  'csrfmiddlewaretoken': '{{ csrf_token }}'
+              },
+              success: function(data) {
+                  alert('Product added to cart');
+                  updateCartPreview();
+              },
+              error: function() {
+                  alert('An error occurred while adding the product to the cart.');
+              }
+          });
+      });
+
+      // Function to update cart preview
+      function updateCartPreview() {
+          $.ajax({
+              url: '{% url "cart_contents" %}',
+              success: function(data) {
+                  var cartItems = $('#cart-items');
+                  var cartSubtotal = $('#cart-subtotal');
+                  cartItems.empty();
+                  $.each(data.cart_items, function(index, item) {
+                      cartItems.append(
+                          '<div class="cart-item">' +
+                          '<p>' + item.product_name + ' - £' + item.product_price + ' x ' + item.quantity + '</p>' +
+                          '</div>'
+                      );
+                  });
+                  cartSubtotal.text(data.cart_subtotal.toFixed(2));
+              },
+              error: function() {
+                  alert('An error occurred while fetching the cart contents.');
+              }
+          });
+      }
   });
 </script>
-
 {% endblock %}

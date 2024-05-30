@@ -1,10 +1,9 @@
 # checkout/models.py
 from django.db import models
-from django.contrib.auth.models import User
 from products.models import Products
 
 class Order(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    session_key = models.CharField(max_length=40, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=50, choices=(
@@ -16,7 +15,7 @@ class Order(models.Model):
     total = models.FloatField()
 
     def __str__(self):
-        return f"Order {self.id} by {self.user.username}"
+        return f"Order {self.id}"
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
@@ -42,12 +41,12 @@ class Payment(models.Model):
         return f"Payment for order {self.order.id}"
 
 class Cart(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    session_key = models.CharField(max_length=40, null=True, blank=True)
     status = models.CharField(max_length=10, choices=(('open', 'Open'), ('closed', 'Closed')), default='open')
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Cart {self.id} - {self.user.username}"
+        return f"Cart {self.id} - Session {self.session_key}"
 
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
@@ -56,24 +55,3 @@ class CartItem(models.Model):
 
     def __str__(self):
         return f"{self.quantity} of {self.product.name} in cart {self.cart.id}"
-    
-    def get_cart_items(request):
-        cart, created = Cart.objects.get_or_create(user=request.user, status='open')
-        cart_items = CartItem.objects.filter(cart=cart)
-        items = [
-            {
-                'product': item.product,
-                'quantity': item.quantity,
-                'price': item.product.price
-            }
-            for item in cart_items
-        ]
-        return items
-    
-    def clear_cart(request):
-        cart = Cart.objects.get(user=request.user, status='open')
-        cart_items = CartItem.objects.filter(cart=cart)
-        for item in cart_items:
-            item.delete()
-        cart.status = 'closed'
-        cart.save()
