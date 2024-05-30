@@ -27,7 +27,7 @@
   <div id="w-node-_44f28119-be43-087c-640a-17fece7a54e1-09c1ba21" data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navigation-bar w-nav">
     <div class="w-layout-grid _12colg colmargin">
       <div id="w-node-bc06f031-c813-c88b-620a-46be54bdb964-09c1ba21" class="navsearch">
-        <div class="searchlinkblock">
+        <div class="search">
           <div class="searchtext minor-third---bl-semi-bold">Search</div>
           <img width="16" loading="lazy" alt="search-icon" src="{% static 'images/search-icon.png' %}" class="searchicon">
         </div>
@@ -70,10 +70,12 @@
                     <a class="close-cart" href="#">✕</a>
                 </div>
                 <div class="cart-body">
-                  <p>Subtotal: $0.00 USD</p>
-                  <button class="apple-pay-button">Apple Pay</button>
-                  <a href="{% url 'checkout' %}" class="checkout-button">Continue to Checkout</a>
-              </div>
+                    <p>Subtotal: £0.00</p>
+                    <button class="apple-pay-button">Apple Pay</button>
+                    <a href="{% url 'checkout' %}" class="checkout-button">Continue to Checkout</a>
+
+                    <!-- Cart items will be dynamically inserted here -->
+                </div>
             </div>
         </div>
     </div>

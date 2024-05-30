@@ -3,6 +3,7 @@ from django.shortcuts import render
 from products.models import ProductCategory, Products, ProductImage, ProductStyle
 from django.http import JsonResponse
 
+
 def shop(request):
     categories = ProductCategory.objects.all()
     styles = ProductStyle.objects.all()
