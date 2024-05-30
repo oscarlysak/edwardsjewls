@@ -1,28 +1,32 @@
-#shop/views.py
+# views.py
 from django.shortcuts import render
 from products.models import ProductCategory, Products, ProductImage, ProductStyle
 from django.http import JsonResponse
-
+from django.db.models import Q
 
 def shop(request):
     categories = ProductCategory.objects.all()
     styles = ProductStyle.objects.all()
-    products = Products.objects.all()
+    search_query = request.GET.get('q', '')
+    filters = Q(name__icontains=search_query) | Q(description__icontains=search_query) if search_query else Q()
+    products = Products.objects.filter(filters)
     images = ProductImage.objects.all()
     return render(request, 'shop/shop.html', {'categories': categories, 'styles': styles, 'products': products, 'images': images})
 
 def filter_products(request):
     category_id = request.GET.get('category_id')
     style_id = request.GET.get('style_id')
-    print(f"Filtering by category: {category_id}, style: {style_id}")  # Debug print
+    search_query = request.GET.get('q', '')
     
-    filters = {}
+    filters = Q()
     if category_id:
-        filters['product_category_id'] = category_id
+        filters &= Q(product_category_id=category_id)
     if style_id:
-        filters['product_style_id'] = style_id
+        filters &= Q(product_style_id=style_id)
+    if search_query:
+        filters &= Q(name__icontains=search_query) | Q(description__icontains=search_query)
 
-    products = Products.objects.filter(**filters) if filters else Products.objects.all()
+    products = Products.objects.filter(filters)
     
     product_list = []
     for product in products:
@@ -37,4 +41,3 @@ def filter_products(request):
         })
     
     return JsonResponse({'products': product_list})
-
