@@ -6,7 +6,7 @@ from django.db.models import Q
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 
-def get_fuzzy_matches(query, choices, scorer=fuzz.partial_ratio, cutoff=40):
+def get_fuzzy_matches(query, choices, scorer=fuzz.partial_ratio, cutoff=60): # to adjust typo tolerance, change the cutoff value
     """
     Return the best matches for a given query using fuzzy matching.
     """
