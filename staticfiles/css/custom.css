@@ -65,60 +65,34 @@
     text-decoration: none; /* Remove underline from the link */
 }
 
-.cart-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
 
-.cart-item-image-container {
-    flex: 0 0 50px; /* Ensure the image container is a fixed width */
-    margin-right: 10px;
-}
-
-.cart-item-image {
-    width: 100%;
-    height: auto;
-}
-
-.cart-item-details {
-    flex: 1;
-}
 .search-form {
     display: flex;
     align-items: center;
-    background-color: #f1f1f1;
-    padding: 5px 10px;  /* Adjusted padding for better alignment */
-    border-radius: 5px;
-    width: auto;  /* Changed to auto to fit content */
-    position: relative;  /* Ensure positioning context for z-index */
-  }
-  
-  .search-input {
+    background-color: #f1f1f1;  /* Adjust the background color to match your design */
+    padding: 10px;  /* Adjust the padding for the desired height */
+    border-radius: 5px;  /* Rounded corners */
+    width: 100%;  /* Full width */
+}
+
+.search-input {
     border: none;
     background: none;
     outline: none;
     flex: 1;
-    padding: 5px;
+    padding: 10px;
     font-size: 16px;
-    max-width: 200px;  /* Adjust the max-width to control the input size */
-    position: relative;
-  }
-  
-  .search-button {
+}
+
+.search-button {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0;
-    margin-left: -25px;  /* Adjust margin to overlap with input */
-    position: relative;
-    z-index: 1;  /* Ensure button is in front of input */
-  }
-  
-  .search-icon {
+    padding: 0; /* Ensure no padding to fit the icon correctly */
+}
+
+.search-icon {
     width: 20px;
     height: 20px;
-    position: relative;
-    z-index: 2;  /* Highest z-index for the icon */
-  }
-  
+}
+
