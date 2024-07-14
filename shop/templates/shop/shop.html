@@ -4,15 +4,13 @@
 {% block title %}Shop - Edwards Jewellers{% endblock %}
 
 {% block content %}
-<section class="shoptitleseciton">
-    <div class="w-layout-grid _12colg colmargin">
-        <div id="w-node-c700e414-282e-fa3b-5d5b-5a559b48fbd2-78b4ab80" class="shoptitle-description">
-            <h1 class="shoptitle minor-third---h1">Shop</h1>
-            <p class="shopdescription minor-third---body-large">Browse our luxury collection of whatever. Browse our luxury collection of whatever.</p>
-        </div>
+  <section class="titlesection breakpointmargin breakpointgrid backgroundmaincolour">
+    <div id="w-node-_8da6c704-9d6e-9522-3c17-d000093479a8-736ee0e4" class="titlecontentholder">
+      <h1 class="pagetitleheading h1size offblackfontcolour headingfontbold">Shop</h1>
+      <p class="pagetitleparagraph bodylargesize offblackfontcolour bodyfontregular">Browse our curated collection of vintage and antique jewellery, or explore our latest new bespoke pieces.</p>
     </div>
-</section>
-<section class="shopnavigationsection">
+  </section>
+  <section class="shopnavigationsection">
     <div class="vintage-newfilter">
         {% for style in styles %}
         <a href="#" class="link-block-4 w-inline-block" data-style="{{ style.id }}">
@@ -30,30 +28,51 @@
         </a>
         {% endfor %}
     </div>
-</section>
-<section class="product-section">
-    <div class="w-layout-grid _12colg colmargin">
-        <div id="w-node-_88aab53b-dc12-f4da-2b37-096a18c3b96c-78b4ab80" class="productholder">
-            {% for product in products %}
-            <div id="w-node-_7592565a-0da9-5a97-80fb-d6bf7412e87c-78b4ab80" class="product-frame">
-                <img src="{% if product.images.first %}{{ product.images.first.image.url }}{% else %}https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg{% endif %}" loading="lazy" alt="{{ product.name }}" class="product-image">
-                <div class="productcontent">
-                    <div class="productinfo">
-                        <div class="productname minor-third---bl-semi-bold">{{ product.name }}</div>
-                        <div class="productdescription minor-third---body">{{ product.description }}</div>
-                        <div class="productprice minor-third---body-large">£{{ product.price }}</div>
-                    </div>
-                    <div class="productbuttonrow">
-                        <a href="#" class="addtocart minor-third---body w-button" data-product-id="{{ product.id }}">Buy</a>
-                        <div class="text-block-3">-</div>
-                        <a href="#" class="enquire minor-third---body w-button">Enquire</a>
-                    </div>
-                </div>
-            </div> 
-            {% endfor %}
-        </div>
+  </section>
+  <section class="shopproductsection breakpointgrid breakpointmargin backgroundmaincolour">
+    <div data-hover="false" data-delay="0" id="w-node-_4f93d756-5d2c-e6ea-fd33-8214050e3d37-736ee0e4" class="sortbydropdown w-dropdown">
+      <div class="sortbytoggle w-dropdown-toggle">
+        <div class="sortbytext bodysize bodyfontmedium offblackfontcolour">Sort By</div>
+        <div class="dropdownicon w-icon-dropdown-toggle"></div>
+      </div>
+      <nav class="w-dropdown-list">
+        <a href="#" class="w-dropdown-link">Link 1</a>
+        <a href="#" class="w-dropdown-link">Link 2</a>
+        <a href="#" class="w-dropdown-link">Link 3</a>
+      </nav>
     </div>
-</section>
-
+    <div id="w-node-_253729a0-41f1-a9be-bd05-372028b093ba-736ee0e4" class="shoppageproductcontainer">
+      {% for product in products %}
+      <div class="productcontainer">
+        <a href="#" class="productimagetext w-inline-block">
+          <img width="Auto" loading="lazy" alt="{{ product.name }}" src="{% if product.images.first %}{{ product.images.first.image.url }}{% else %}https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg{% endif %}" class="productimage dropshadow5 rounding">
+          <div class="producttextcontent">
+            <div class="productnametext bodylargesize offblackfontcolour headingfontsemibold">{{ product.name }}</div>
+            <p class="productdescription bodysize offblackfontcolour bodyfontregular">{{ product.description }}</p>
+            <div class="productprice bodylargesize offblackfontcolour bodyfontregular">£{{ product.price }}</div>
+          </div>
+        </a>
+        <div class="productbuttonsection">
+          <div class="productbuttonholder">
+            <a href="#" class="productbutton w-inline-block" data-product-id="{{ product.id }}">
+              <div class="addtocarttext bodysmallsize offblackfontcolour bodyfontregular">Add To Cart</div>
+            </a>
+          </div>
+          <div class="productbuttonspacer"><img src="images/Line-4.svg" loading="lazy" alt=""></div>
+          <div class="productbuttonholder">
+            <a href="#" class="productbutton w-inline-block">
+              <div class="enquiretext bodysmallsize offblackfontcolour bodyfontregular">Enquire</div>
+            </a>
+          </div>
+          <div class="productbuttonholdermobile">
+            <a href="#" class="productbutton invisiblepadding8px w-inline-block">
+              <div class="addtocarttext bodysmallsize offblackfontcolour bodyfontregular">View Product</div>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 {% endblock %}
