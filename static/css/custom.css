@@ -87,41 +87,45 @@
 
 
 
+
+
 .search-form {
     display: flex;
     align-items: center;
-    background-color: #f1f1f1;
-    padding: 5px 10px;  /* Adjusted padding for better alignment */
+    background-color: #e5e7eb; /* Match the background color of your navbar */
+    padding: 5px;
     border-radius: 5px;
-    width: auto;  /* Changed to auto to fit content */
-    position: relative;  /* Ensure positioning context for z-index */
-  }
-  
-  .search-input {
+    width: 250px; /* Adjust the width to fit your design */
+    position: relative;
+}
+
+.search-input {
     border: none;
     background: none;
     outline: none;
     flex: 1;
     padding: 5px;
     font-size: 16px;
-    max-width: 200px;  /* Adjust the max-width to control the input size */
-    position: relative;
-  }
-  
-  .search-button {
+    border-radius: 5px 0 0 5px; /* Round only the left side */
+    background-color: #e5e7eb; /* Match the background color if needed */
+}
+
+.search-button {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0;
-    margin-left: -25px;  /* Adjust margin to overlap with input */
+    padding: 5px;
+    margin-left: -30px; /* Adjust margin to overlap with input */
     position: relative;
-    z-index: 1;  /* Ensure button is in front of input */
-  }
-  
-  .search-icon {
+    z-index: 1;
+    border-radius: 0 5px 5px 0; /* Round only the right side */
+    background-color: #e5e7eb; /* Match the background color if needed */
+}
+
+.search-icon {
     width: 20px;
+    min-width: 16px; /* Ensure the icon is not too small */
     height: 20px;
     position: relative;
-    z-index: 2;  /* Highest z-index for the icon */
-  }
-  
+    z-index: 2;
+}
