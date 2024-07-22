@@ -10,24 +10,27 @@
       <p class="pagetitleparagraph bodylargesize offblackfontcolour bodyfontregular">Browse our curated collection of vintage and antique jewellery, or explore our latest new bespoke pieces.</p>
     </div>
   </section>
-  <section class="shopnavigationsection">
-    <div class="vintage-newfilter">
-        {% for style in styles %}
-        <a href="#" class="link-block-4 w-inline-block" data-style="{{ style.id }}">
-            <h2 class="vintagebutton">{{ style.name }}</h2>
-        </a>
-        {% endfor %}
+  <section class="shopnavigationsection breakpointgrid breakpointmargin backgroundmaincolour">
+    <div id="w-node-_704efe9b-1ae5-c2a5-0bac-91b724f828d3-736ee0e4" class="navigationfilterholder">
+      <div class="vintage-newfilter">
+          {% for style in styles %}
+          <a href="#" class="link-block-4 w-inline-block" data-style="{{ style.id }}">
+              <h2 class="vintagebutton">{{ style.name }}</h2>
+          </a>
+          {% endfor %}
+      </div>
     </div>
-    <div class="shop-nav-menu">
-        <a href="#" class="filterlink w-inline-block" data-category="">
-            <h3 class="shopfilter minor-third---h3-semi-bold shopall">Shop All</h3>
-        </a>
-        {% for category in categories %}
-        <a href="#" class="filterlink w-inline-block" data-category="{{ category.id }}">
-            <h3 class="shopfilter minor-third---h3-semi-bold">{{ category.name }}</h3>
-        </a>
-        {% endfor %}
-    </div>
+    <div id="w-node-_414d1cc1-47e1-d5c2-b69f-492623a58b64-736ee0e4" class="shopproductnavigation">
+          <a href="#" class="fitlerproductlinkblock w-inline-block" data-category="">
+              <h3 class="shopfilter minor-third---h3-semi-bold shopall">Shop All</h3>
+          </a>
+          {% for category in categories %}
+          <a href="#" class="filterlink w-inline-block" data-category="{{ category.id }}">
+              <h3 class="shopfilter minor-third---h3-semi-bold">{{ category.name }}</h3>
+          </a>
+          {% endfor %}
+      </div>
+    
   </section>
   <section class="shopproductsection breakpointgrid breakpointmargin backgroundmaincolour">
     <div data-hover="false" data-delay="0" id="w-node-_4f93d756-5d2c-e6ea-fd33-8214050e3d37-736ee0e4" class="sortbydropdown w-dropdown">
@@ -41,7 +44,7 @@
         <a href="#" class="w-dropdown-link">Link 3</a>
       </nav>
     </div>
-    <div id="w-node-_253729a0-41f1-a9be-bd05-372028b093ba-736ee0e4" class="shoppageproductcontainer">
+    <div id="w-node-a085742e-de32-efd9-4ac9-83026475e7ed-736ee0e4" class="productcontainer">
       {% for product in products %}
       <div class="productcontainer">
         <a href="#" class="productimagetext w-inline-block">
