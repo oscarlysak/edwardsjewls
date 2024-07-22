@@ -4,11 +4,14 @@
 
 {% block content %}
 
-  <section class="annoucementbarsection">
-    <div class="annoucementbardiv breakpointmargin">
-      <div class="announcementbartext offwhitefontcolour bodysize bodyfontregular">This is the Announcement Bar, This is the Announcement bar. </div>
-    </div>
-  </section>
+<section class="annoucementbarsection">
+  <div class="annoucementbardiv breakpointmargin">
+      {% get_announcement_text as announcement_text %}
+      <div class="announcementbartext offwhitefontcolour bodysize bodyfontregular">
+          {{ announcement_text }}
+      </div>
+  </div>
+</section>
   <section class="herosection breakpointgrid breakpointmargin backgroundmaincolour"><img src="images/NewImageDesktop.jpg" loading="lazy" id="w-node-_74b27b11-b136-2f6f-9448-c9334c7650a8-dfca60fd" sizes="(max-width: 479px) 21vw, (max-width: 767px) 22vw, (max-width: 991px) 10vw, 100vw" alt="" srcset="images/NewImageDesktop-p-500.jpg 500w, images/NewImageDesktop-p-800.jpg 800w, images/NewImageDesktop-p-1080.jpg 1080w, images/NewImageDesktop-p-1600.jpg 1600w, images/NewImageDesktop-p-2000.jpg 2000w, images/NewImageDesktop.jpg 3840w" class="image-4">
     <div id="w-node-_25bae930-1fa1-fb47-f210-e96f8dc57696-dfca60fd" class="herocontainer dropshadow5 rounding">
       <div id="w-node-_25bae930-1fa1-fb47-f210-e96f8dc57697-dfca60fd" class="herocontentholder">
