@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 
+{% load custom_tags %}
+
 {% block title %}Home - Edwards Jewellers{% endblock %}
 
 {% block content %}
 
+<!-- Announcement Bar -->
 <section class="annoucementbarsection">
   <div class="annoucementbardiv breakpointmargin">
       {% get_announcement_text as announcement_text %}
